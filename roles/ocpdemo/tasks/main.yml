@@ -2,7 +2,7 @@
 - name: log in to openshift
   command: oc --insecure-skip-tls-verify  login https://{{oc_host}}:{{oc_port }} -u {{oc_user }} -p {{ oc_password }}
 
-- name: create the deepwells project
+- name: create the configured project
   command: oc --insecure-skip-tls-verify  new-project {{  project_name }}
   ignore_errors: yes
 
@@ -19,7 +19,7 @@
      password:  "{{ oc_password }}"
    when: False
 
-- name: use the deepwells project
+- name: use the configured project
   command: oc --insecure-skip-tls-verify  project {{  project_name }}
 
 - name: Create a Jenkins Deployment by reading the definition from a local file
