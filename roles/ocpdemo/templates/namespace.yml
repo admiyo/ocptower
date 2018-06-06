@@ -1,0 +1,8 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ansible-test
+  labels:
+     label_env: production
+     label_ver: latest

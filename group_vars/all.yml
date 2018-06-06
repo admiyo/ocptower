@@ -1,0 +1,4 @@
+---
+project_name:  deepwells
+oc_host: master.rhpds.openshift.opentlc.com
+oc_port: 443

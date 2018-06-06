@@ -1,0 +1,14 @@
+---
+- name: log in to openshift
+  command: oc login https://{{oc_host}}:{{oc_port }} -u {{oc_user }} -p {{ oc_password }}
+
+- name: use the correct project
+  command: oc project {{  project_name }}
+
+- name: Delete the Jenkins Deployment via local file
+  command: oc delete -f "{{ role_path }}/../ocpdemo/files/jenkins-ephemeral.yaml"
+
+- name: log out of openshift
+  command:  oc logout
+  when: False
+  
