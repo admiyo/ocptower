@@ -1,6 +1,12 @@
 ---
 - name: log in to openshift
-  command: oc --insecure-skip-tls-verify  login https://{{oc_host}}:{{oc_port }} -u {{oc_user }} -p {{ oc_password }} 
+  command: oc --insecure-skip-tls-verify  login https://{{oc_host}}:{{oc_port }} -u {{oc_user }} -p {{ oc_password }}
+
+- name: create the deepwells project
+  command: oc --insecure-skip-tls-verify  new-project {{  project_name }}
+  ignore_errors: yes
+
+# Raw Openshift requires python code not in the repo
 -  name: Create a kubernetes namespace
    openshift_raw:
      api_version: v1
@@ -11,7 +17,7 @@
      state: present
      username:  "{{oc_user }}"
      password:  "{{ oc_password }}"
-
+   when: False
 
 - name: use the deepwells project
   command: oc --insecure-skip-tls-verify  project {{  project_name }}

@@ -7,6 +7,7 @@
 
 - name: Delete the Jenkins Deployment via local file
   command: oc --insecure-skip-tls-verify  delete -f "{{ role_path }}/../ocpdemo/files/jenkins-ephemeral.yaml"
+  ignore_errors: yes
 
 - name: log out of openshift
   command:  oc --insecure-skip-tls-verify logout
